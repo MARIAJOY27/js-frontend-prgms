@@ -1,0 +1,148 @@
+JAVASCRIPT FRONTEND
+-------------------
+- Behaviour
+
+ Browser
+---------
+ - it is an application program that provides an interface to interact with all information available in WWW(World Wide Web)
+
+ Browser engines -can read and display HTML,CSS and JavaScript contents.
+
+ -JavaScript cannot directly access the HTML and CSS.
+ -but JavaScript can access DOM(Document Object Model)
+
+ DOM
+ ---
+ - A tree structure of HTML document.
+ - DOM is created by Browser.
+
+ BOM - Browser Object Model
+   - created by Browser
+
+ Way to apply JavaScript with HTML file
+ --------------------------------------
+ 1) internal js - <script></script>
+       - placed after the body tag close.
+ 2) external js - create an external file with extension as .js
+       - link it with HTML file using script tag and mention the path in the src attribute        
+
+ How to access the HTML tag
+ --------------------------
+ 1)document.getElementById("id") - it returns that particular tag
+ 2)document.getElementByTagname("tagname") - it returns HTML collection(array) of that particular tag
+ 3)document.getElementByClassName("className") - it returns HTML collection(array) of that particular tag with same className
+ 4)document.querySelector("tagname/#id/.className") - returns the first tag that satisfies the condition
+ 5)document.querySelectorAll("tagname/#id/.className") - returns all the tags that satisfies the condition, nodelist - array of all tags that satisfy the condition
+
+ How to access the contents
+ --------------------------
+ 1).innerHTML
+
+ document.write(),textcontent()      
+
+ Events
+ ------
+ - Events are those actions which have the ability to update DOM
+ Eg: click
+     change
+     keydown
+     submit
+     load
+
+
+ DATABASE
+-----------
+- used to store data
+- data should be stored as key value pair
+- key must be string
+
+- mongodb
+
+- browser - storage spaces
+  1)local storage - limited amount of data storage - permanent storage
+                  - gone if manually removed only
+  2)session storage - limited amount of data storage - no permanent storage 
+                    - data will be lost when that session is closed.
+
+  Operations in local storage  -->key and value should be string
+  ---------------------------
+  1) Add data - setItem("key",value)
+  2) Retrieve data - getItem(key)
+  3) Delete data - removeItem(key)
+
+   JSON.stringify - convert object into string
+   JSON.parse - convert string into object
+
+
+    API 
+    ---
+ - Application Programming Interface 
+ - to communicate between 2 software applications available in internet
+
+   different types of API's 
+   ------------------------
+    1) Public API
+    2) Private API
+    3) Partner API
+    4) Composite API
+
+    HTTP - HyperText Transfer Protocol - the internet protocol that should be followed while communicating btw software applications
+    ----------------------------------
+    refer - HTTPS, FTP, SMTP, TCP, UDP 
+          - HTTP vs HTTPS
+
+          HTTPS - More secure transmission
+
+     Methods in HTTP
+     ---------------
+     - get - to retrieve data 
+     - put - to update data
+     - post - to add data
+     - delete - to remove data     
+
+     these requests have 2 parts
+     1) header - secret content
+     2) body - content
+
+     response series
+     1) 1xx - information
+     2) 2xx - success
+     3) 3xx - redirection
+     4) 4xx - client side error
+     5) 5xx - server side error 
+
+
+     JSON - JavaScript Object Notation
+     ---------------------------------
+     - Common format of sharing data
+     - key:value - both key and value should be string
+     {}-object,[]-array and items seperated by commas
+
+
+     URL - Uniform Resource Locator
+     ------------------------------
+     - resource address in internet
+
+     RESTFUL(Representational State Transfer) API - entire Architecture of API
+     refer - SOAP API
+
+    
+    API testing tools
+    -----------------
+    1) thunder client - vscode extension
+    2) postman - real tool 
+
+
+    Different Methods to do API calls
+    ---------------------------------
+    1) AJAX - Asynchronous JavaScript XML
+    2) FETCH - based on promise class - a class that resolves asynchronous functions
+    3) ASYNC-AWAIT - based on promise class
+       - response can be stored in a variable
+       - requires only 1 .then()
+
+
+    promise class -
+    1) resolve state - requests are resolved , .then()
+    2) pending state - requests are neither resolved nor rejected
+    3) reject state - requests are rejected,  .catch()

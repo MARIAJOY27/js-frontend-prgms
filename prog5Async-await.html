@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Search Application</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="background-image:url('https://media.istockphoto.com/id/1335852418/vector/modern-world-map-made-of-lines-and-dots-on-dark-blue-background.jpg?s=612x612&w=0&k=20&c=XfJWcVZDH4MSZgS187PtdL3UNC00u4x6CQr2YQBSAzA=') ; background-repeat:no-repeat; background-size:cover; height:100vh;">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <h1 class="text-light mt-4 text-center">COUNTRY DETAILS</h1>
+
+            <div class="d-flex mt-4 justify-content-center">
+                <input type="text" class="form-control w-50" placeholder="Enter the country name" id="country">
+                <button class="btn btn-outline-light ms-3" type="button" onclick="search()">Search</button>
+            </div>
+
+            <div class="mt-4" id="result" >
+                
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    
+</body>
+<script>
+    const search =async()=>{
+        console.log('inside search function')
+        let cname = country.value
+        /*console.log(cname)*/
+
+        if(cname){
+             
+            const response = await fetch(`https://restcountries.com/v3.1/name/${cname}?fullText=true`)
+            /*console.log(response)*/
+            response.json().then((data)=>{
+                console.log(data)
+
+                //flag
+                let flag = data[0].flags.png
+                console.log(flag)
+
+                //common name
+                let com = data[0].name.common
+                console.log(com)
+
+                //official name
+                let official = data[0].name.official
+                console.log(official)
+ 
+                //capital
+                let capital = data[0].capital
+                console.log(capital)
+
+                //continents
+                let continent = data[0].continents
+                console.log(continent)
+
+                //time zone
+                let timezone = data[0].timezones
+                console.log(timezone)
+
+                //area
+                let area = data[0].area
+                console.log(area)
+
+                //border countries
+                let bcountries = data[0].borders
+                console.log(bcountries)
+
+                // languages
+                language = []
+                for(let lang in data[0].languages){
+                    language.push(data[0].languages[lang])
+                }
+                console.log(language)
+
+                // currency
+                currency = []
+                for(let curr in data[0].currencies){
+                    var currencyName = data[0].currencies[curr].name
+                    var currencySymbol = data[0].currencies[curr].symbol
+                    currency.push(currencyName)
+                    currency.push(currencySymbol)
+                }
+                console.log(currency)
+
+                //population
+                let population = data[0].population
+                console.log(population)
+
+                //google maps
+                let gmap = data[0].maps.googleMaps
+                console.log(gmap)
+
+                // street map
+                let smap = data[0].maps.openStreetMaps
+                console.log(smap)
+
+                result.innerHTML = ` <div class="card mb-3 p-3">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="${flag}" class="card-img-top" alt="..." style="width: 250px; margin-left:15px;">
+                            <div class="card-body mt-3">
+                              <h5 class="card-title">${official}</h5>
+                            </div>
+                            <ul class="list-group ">
+                              <li class="list-group-item">Name:${com}</li> 
+                              <li class="list-group-item mt-1">Capital:${capital}</li>
+                              
+                            </ul>
+                        </div>
+                        <div class="col-8">
+                            <div class="card" style="width: 18rem;">
+                                    
+                                  
+                                <ul class="list-group">
+                                  <li class="list-group-item"style="width: 770px;">Continent:${continent}</li>
+                                  <li class="list-group-item" style="width: 770px;">Time zone:${timezone}</li>
+                                  <li class="list-group-item" style="width: 770px;">Area:${area}</li>
+                                  <li class="list-group-item" style="width: 770px;">Border countries:${bcountries}</li>
+                                  <li class="list-group-item" style="width: 770px;">Languages:${language}</li>
+                                  <li class="list-group-item"style="width: 770px;">Currency:${currency}</li>
+                                  <li class="list-group-item" style="width: 770px;">Population:${population}</li>
+                                  <li class="list-group-item"style="width: 770px;">Google Map:<a href=${gmap} target="_blank">${gmap}</a></li>
+                                  <li class="list-group-item" style="width: 770px;">Street map: <a href=${smap} target="_blank">${smap}</a></li>
+                                  
+                                </ul>
+                              </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                  </div>`
+            })
+
+
+        }
+        else{
+            alert('Please enter country name')
+        }
+    }
+</script>
+</html>

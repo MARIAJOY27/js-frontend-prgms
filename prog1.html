@@ -1,0 +1,46 @@
+<!--An html page where on clicking on the click button,DOM in the h1 tag changes to Document Object Model-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="c">Javascript</h1>
+    <h1 id="dom">DOM</h1>
+    <p class="c">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam perferendis qui suscipit aut sit dolor nulla ad iste maxime facilis, quia quaerat illo reprehenderit voluptate nemo ex mollitia porro omnis.</p>
+    <button onclick="change()">Click</button>
+</body>
+<script>
+    function change(){
+        // using document.getElementById()
+       /* let content = document.getElementById("dom")
+        console.log(content)
+        content.innerHTML = "Document Object Model"
+        content.style.color = "red"*/ 
+
+        // using document.getElementsByTagName() and changing the2nd h1 tag...so from the array collection index 1 is taken
+        /*let content = document.getElementsByTagName("h1")
+        console.log(content)
+        content[1].innerHTML = "Document Object Model"
+        content[1].style.color = "red"*/
+        
+        // using document.getElementsByClassName() 
+        /*let content = document.getElementsByClassName("c")
+        console.log(content)
+        content[1].innerHTML = "Document Object Model"
+        content[1].style.color = "red"*/
+
+        //queryselector()
+       /* let content = document.querySelector("h1")
+        console.log(content)
+        content[1].innerHTML = "Document Object Model"
+        content[1].style.color = "red"*/
+
+        dom.innerHTML='Document Object Model'
+        dom.style.color = "blue"
+    }
+</script>
+</html>
